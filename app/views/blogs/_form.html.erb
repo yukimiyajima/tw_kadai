@@ -1,0 +1,21 @@
+<%= form_with(model: @blog, local: true ,url: choose_new_or_edit ) do |form| %>
+  <header></header>
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @blog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="blog_title">
+    <%= form.label :内容%>
+    <%= form.text_field :content%>
+  </div>
+  
+  <%= form.submit :投稿する %>
+<% end %>
+<%= link_to "つぶやき一覧画面にもどる", blogs_path %>
